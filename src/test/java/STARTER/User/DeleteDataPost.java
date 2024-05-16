@@ -24,7 +24,7 @@ public class DeleteDataPost {
         restAssuredThat(response -> response.statusCode(200));
     }
 
-    @Step("I verify the post data is no longer retrievable using a GET request with the same ID")
+    @Step("the post data is no longer retrievable using a GET request with the same ID")
     public void verifyPostDataDeleted() {
     }
 }
