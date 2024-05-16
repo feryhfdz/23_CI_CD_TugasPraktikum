@@ -27,4 +27,20 @@ public class DeleteDataPost {
     @Step("the post data is no longer retrievable using a GET request with the same ID")
     public void verifyPostDataDeleted() {
     }
+
+    @Step("I send a DELETE request to the endpoint with a non-existent ID")
+    public void sendDeleteRequestWithNonExistentId() {
+        String nonExistentId = "10000000000000000000";
+        SerenityRest.given()
+                .delete(url + nonExistentId);
+    }
+    @Step("I receive a response with status code 404 Not Found")
+    public void receiveStatusCode404(){
+        restAssuredThat(response -> response.statusCode(404));
+    }
+
+    @Step("the response body contains an error message Post not found")
+    public void receiveErrorMessage(){
+        restAssuredThat(response -> response.body("'error'", equalTo("TypeError: Cannot read properties of undefined (reading 'id')")));
+    }
 }

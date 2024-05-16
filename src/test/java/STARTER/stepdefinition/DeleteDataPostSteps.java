@@ -31,4 +31,18 @@ public class DeleteDataPostSteps {
         deleteDataPost.verifyPostDataDeleted();
     }
 
+    @When("I send a DELETE request to the endpoint with a non-existent ID")
+    public void sendDeleteRequestWithNonExistentId() {
+        deleteDataPost.sendDeleteRequestWithNonExistentId();
+    }
+
+    @Then("I receive a response with status code 404 Not Found")
+    public void receiveStatusCode404(){
+        deleteDataPost.receiveStatusCode404();
+    }
+
+    @And("the response body contains an error message Post not found")
+    public void receiveErrorMessage(){
+        deleteDataPost.receiveErrorMessage();
+    }
 }
